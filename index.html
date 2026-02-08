@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valentinstag </title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffe6ee;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #d6336c;
+    }
+
+    img {
+      width: 250px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #adb5bd;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Willst du mein Valentinstagsdate sein? </h1>
+
+    <img src="https://via.placeholder.com/250" alt="Us">
+
+    <div class="buttons">
+      <button id="yesBtn">Ja</button>
+      <button id="noBtn">Nein</button>
+    </div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    let scale = 1;
+    let noClickCount = 0;
+
+    const noTexts = [
+      "Sicher?",
+      "hä bist du dir sicher?",
+      "drück bitte auf ja!!",
+      "😡😡😡"
+    ];
+
+    noBtn.addEventListener("click", () => {
+      // Yes-Button größer machen
+      scale += 0.2;
+      yesBtn.style.transform = `scale(${scale})`;
+
+      // Text ändern
+      if (noClickCount < noTexts.length) {
+        noBtn.textContent = noTexts[noClickCount];
+        noClickCount++;
+      }
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = `
+        <div style="
+          height: 100vh;
+          background: #ffe6ee;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+        ">
+          <div style="
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          ">
+            <h1 style="color:#d6336c; margin-bottom: 15px;">
+              Ich freueeee mich <33
+            </h1>
+
+            <p style="font-size: 18px; margin-bottom: 20px;">
+              Wir gehen schön essen in diesem suuper leckeren Restaurant
+            </p>
+
+            <p style="font-size: 18px; line-height: 1.6;">
+              📅 <strong>14.02.2026</strong><br>
+              🍽 <strong>Restaurant Altes Rathaus</strong><br>
+              📍 Plüderhausen
+            </p>
+
+            <a 
+              href="https://www.altesrathaus.info/"
+              target="_blank"
+              style="
+                display: inline-block;
+                margin-top: 25px;
+                padding: 12px 24px;
+                background: #ff4d6d;
+                color: white;
+                text-decoration: none;
+                border-radius: 12px;
+                font-size: 16px;
+              "
+            >
+              Das Restaurant
+            </a>
+
+            <p style="margin-top: 25px; font-size: 16px;">
+          
+            </p>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
